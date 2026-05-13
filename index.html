@@ -782,7 +782,7 @@
       <div class="foot-col">
         <div class="foot-col-title">Где мы</div>
         <a href="https://t.me/bookpage_394" target="_blank" rel="noopener">Telegram ↗</a>
-        <a href="/cdn-cgi/l/email-protection#b0c0d1838984d7d5f0c9d1ded4d5c89ec2c5"><span class="__cf_email__" data-cfemail="473726747e732022073e262923223f693532">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#fb8b9ac8c2cf9c9ebb829a959f9e83d5898e"><span class="__cf_email__" data-cfemail="eb9b8ad8d2df8c8eab928a858f8e93c5999e">[email&#160;protected]</span></a>
       </div>
     </div>
     <div class="foot-bar">
@@ -794,37 +794,6 @@
       <a href="privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a>
     </div>
   </footer>
-</div>
-
-<!-- Tweaks panel -->
-<div class="tweaks on" id="tweaks">
-  <h4>Tweaks · Архивный стиль</h4>
-  <div class="row"><label>Палитра</label>
-    <select id="paletteSel">
-      <option value="paper">Кремовая бумага</option>
-      <option value="cream">Молочная</option>
-      <option value="sand">Песчаная</option>
-      <option value="ivory">Слоновая</option>
-    </select>
-  </div>
-  <div class="row"><label>Акцент</label>
-    <select id="accentSel">
-      <option value="ochre">Охра</option>
-      <option value="emerald">Изумруд</option>
-      <option value="violet">Фиолет</option>
-      <option value="ink">Уголь (без акцента)</option>
-    </select>
-  </div>
-  <div class="row"><label>Заголовки</label>
-    <select id="fontSel">
-      <option value="fraunces">Fraunces (тёплый)</option>
-      <option value="playfair">Playfair Display</option>
-      <option value="dm">DM Serif Display</option>
-    </select>
-  </div>
-  <div class="row"><label>Зерно</label>
-    <input type="range" id="grainSel" min="0" max="60" value="35">
-  </div>
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -868,17 +837,16 @@ function applyTweaks(t){
   const grain=document.querySelector('style#grain')||(()=>{const s=document.createElement('style');s.id='grain';document.head.appendChild(s);return s})();
   grain.textContent=`body::before{opacity:${t.grain/100}}`;
   // save positions
-  document.getElementById('paletteSel').value=t.palette;
-  document.getElementById('accentSel').value=t.accent;
-  document.getElementById('fontSel').value=t.font;
-  document.getElementById('grainSel').value=t.grain;
+  // tweak controls removed in standalone export
+  ['paletteSel','accentSel','fontSel','grainSel'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=t[id.replace('Sel','')];});
 }
 let tweaks={...TWEAK_DEFAULTS};
 applyTweaks(tweaks);
 
 ['palette:paletteSel','accent:accentSel','font:fontSel','grain:grainSel'].forEach(pair=>{
   const [key,id]=pair.split(':');
-  document.getElementById(id).addEventListener('input',e=>{
+  const _el=document.getElementById(id); if(!_el) return;
+  _el.addEventListener('input',e=>{
     tweaks[key]=key==='grain'?+e.target.value:e.target.value;
     applyTweaks(tweaks);
     try{window.parent.postMessage({type:'__edit_mode_set_keys',edits:{[key]:tweaks[key]}},'*');}catch(e){}
@@ -888,8 +856,9 @@ applyTweaks(tweaks);
 // Edit mode handshake
 window.addEventListener('message',e=>{
   if(!e.data) return;
-  if(e.data.type==='__activate_edit_mode') document.getElementById('tweaks').classList.add('on');
-  if(e.data.type==='__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('on');
+  const _tw=document.getElementById('tweaks');
+  if(_tw && e.data.type==='__activate_edit_mode') _tw.classList.add('on');
+  if(_tw && e.data.type==='__deactivate_edit_mode') _tw.classList.remove('on');
 });
 try{window.parent.postMessage({type:'__edit_mode_available'},'*');}catch(e){}
 
