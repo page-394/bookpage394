@@ -237,6 +237,13 @@
   .rubr-num{font-family:var(--serif);font-weight:300;font-size:44px;line-height:1;color:var(--ochre-deep);margin-bottom:18px;font-variation-settings:"opsz" 144}
   .rubr-name{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.2;margin-bottom:6px;letter-spacing:-0.01em}
   .rubr-note{font-size:12px;color:var(--mute);line-height:1.4;margin-top:auto;transition:color .2s}
+  .rubr-cta{margin-top:40px;text-align:center}
+  .rubr-cta-line{font-family:var(--serif);font-weight:300;font-size:22px;line-height:1.45;color:var(--ink-soft);letter-spacing:-0.01em;font-variation-settings:"opsz" 72}
+  .rubr-cta-line a{color:var(--ochre-deep);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:5px;text-decoration-color:rgba(182,134,10,.4);transition:color .25s,text-decoration-color .25s}
+  .rubr-cta-line a em{font-style:italic}
+  .rubr-cta-line a .arr{display:inline-block;transition:transform .25s}
+  .rubr-cta-line a:hover{color:var(--ink);text-decoration-color:var(--ink)}
+  .rubr-cta-line a:hover .arr{transform:translate(3px,-3px)}
 
   /* ===== Club coming-soon ===== */
   .club-inner-solo{grid-template-columns:1fr !important;max-width:760px;margin:0 auto;text-align:left}
@@ -600,46 +607,50 @@
     </div>
 
     <div class="rubr-grid">
-      <a class="rubr" href="/zhanry/fantasy">
+      <div class="rubr">
         <div class="rubr-num">42</div>
         <div class="rubr-name">Фэнтези</div>
         <div class="rubr-note">Драконы, академии, ромэнтези</div>
-      </a>
-      <a class="rubr" href="/zhanry/detective">
+      </div>
+      <div class="rubr">
         <div class="rubr-num">28</div>
         <div class="rubr-name">Детективы</div>
         <div class="rubr-note">Карризи, Тёртон, скандинавы</div>
-      </a>
-      <a class="rubr" href="/zhanry/proza">
+      </div>
+      <div class="rubr">
         <div class="rubr-num">35</div>
         <div class="rubr-name">Романы</div>
-        <div class="rubr-note">Петросян и&nbsp;те, что болят</div>
-      </a>
-      <a class="rubr" href="/zhanry/magical">
+        <div class="rubr-note">Те, что остаются с&nbsp;вами надолго</div>
+      </div>
+      <div class="rubr">
         <div class="rubr-num">14</div>
         <div class="rubr-name">Магический реализм</div>
         <div class="rubr-note">Когда реальность даёт трещину</div>
-      </a>
-      <a class="rubr" href="/zhanry/slav">
+      </div>
+      <div class="rubr">
         <div class="rubr-num">11</div>
         <div class="rubr-name">Славянский сеттинг</div>
         <div class="rubr-note">Русские сказки и&nbsp;хтонь</div>
-      </a>
-      <a class="rubr" href="/zhanry/classic">
+      </div>
+      <div class="rubr">
         <div class="rubr-num">9</div>
         <div class="rubr-name">Классика</div>
         <div class="rubr-note">Иногда перечитываем</div>
-      </a>
-      <a class="rubr" href="/zhanry/anyapishet">
+      </div>
+      <div class="rubr">
         <div class="rubr-num">58</div>
         <div class="rubr-name">#аняпишет</div>
         <div class="rubr-note">Всё, что написала Аня</div>
-      </a>
-      <a class="rubr" href="/zhanry/nastyapishet">
+      </div>
+      <div class="rubr">
         <div class="rubr-num">88</div>
         <div class="rubr-name">#настяпишет</div>
         <div class="rubr-note">Всё, что написала Настя</div>
-      </a>
+      </div>
+    </div>
+
+    <div class="rubr-cta">
+      <p class="rubr-cta-line">Не нашли свой жанр? — <a href="https://t.me/bookpage_394" target="_blank" rel="noopener"><em>Спросите Друллег в&nbsp;Telegram</em> <span class="arr">↗</span></a></p>
     </div>
   </section>
 
@@ -771,7 +782,7 @@
       <div class="foot-col">
         <div class="foot-col-title">Где мы</div>
         <a href="https://t.me/bookpage_394" target="_blank" rel="noopener">Telegram ↗</a>
-        <a href="mailto:pa394ge@yandex.ru">pa394ge@yandex.ru</a>
+        <a href="/cdn-cgi/l/email-protection#b0c0d1838984d7d5f0c9d1ded4d5c89ec2c5"><span class="__cf_email__" data-cfemail="473726747e732022073e262923223f693532">[email&#160;protected]</span></a>
       </div>
     </div>
     <div class="foot-bar">
@@ -786,7 +797,7 @@
 </div>
 
 <!-- Tweaks panel -->
-<div class="tweaks" id="tweaks" style="display:none">
+<div class="tweaks on" id="tweaks">
   <h4>Tweaks · Архивный стиль</h4>
   <div class="row"><label>Палитра</label>
     <select id="paletteSel">
@@ -816,7 +827,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "palette": "sand",
   "accent": "ochre",
