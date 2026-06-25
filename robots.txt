@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stranica394.ru/sitemap.xml
